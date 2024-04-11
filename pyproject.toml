@@ -13,6 +13,11 @@ asyncpg = "^0.29.0"
 alembic = "^1.13.1"
 
 
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.1.1"
+yarl = "^1.9.4"
+sqlalchemy-utils = "^0.41.2"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

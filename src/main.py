@@ -4,7 +4,7 @@ from typing import AsyncIterator
 import uvicorn
 from fastapi import FastAPI
 
-from core.settings import settings
+from core import settings
 from database import db_manager
 from api_v1 import router as router_v1
 

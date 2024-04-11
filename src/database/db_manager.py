@@ -47,5 +47,16 @@ class DatabaseManager:
         async with self.session() as session:
             yield session
 
+    @asynccontextmanager
+    async def connect(self) -> AsyncIterator[AsyncSession]:
+        if self._sessionmaker is None:
+            raise IOError('DatabaseManager is not initialized')
+        async with self._engine.begin() as connection:
+            try:
+                yield connection
+            except Exception:
+                await connection.rollback()
+                raise
+
 
 db_manager = DatabaseManager()
